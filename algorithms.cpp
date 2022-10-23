@@ -34,7 +34,7 @@ namespace LU
 		}
 		return sum;
 	}
-	//виводить LU матрицю
+	//виводить L та U матриці
 	void LUmatrixPrint(double** L, double** U,int size)
 	{
 		cout <<std::setprecision(4);
@@ -72,7 +72,7 @@ namespace LU
 		}
 
 	}
-	//находить суму матриць та віднімаю одиничну матрицю
+	//находить суму матриць та віднімає одиничну матрицю
 	void matrixSum(double** L, double** U, double** C, int size)
 	{
 
@@ -119,7 +119,7 @@ namespace LU
 		 for (int j = 0; j < size; j++)
 		 {
 			 if (i<=j)
-				 U[i][j] = A[i][j] - sum(i, j, L, U, 1);
+				 U[i][j] = (double)(A[i][j] - sum(i, j, L, U, 1));
 			 if (i>=j)
 			 L[i][j] = ((double)(A[i][j] - sum(i, j, L, U, 2)) / (double)U[j][j]);
 		 }
@@ -148,7 +148,7 @@ namespace LU
 
  void myMain()
  {
-	 int size = 3;
+	 int size = 4;
 	 double** A = new double* [size];
 	 for (int i = 0; i < size; i++)
 		 A[i] = new double[size];
@@ -156,13 +156,20 @@ namespace LU
 	 A[0][0] = 6.0;
 	 A[0][1] = 3.0;
 	 A[0][2] = 8.0;
+	 A[0][3] = 1.0;
 	 A[1][0] = 4.0;
 	 A[1][1] = 7.0;
 	 A[1][2] = 6.0;
+	 A[1][3] = 5.0;
 	 A[2][0] = 9.0;
 	 A[2][1] = 1.0;
 	 A[2][2] = 7.0;
-	
+	 A[2][3] = 6.0;
+	 A[3][0] = 8.0;
+	 A[3][1] = 2.0;
+	 A[3][2] = 3.0;
+	 A[3][3] = 1.0;
+
 	
 	 LU(A, size);
 	
