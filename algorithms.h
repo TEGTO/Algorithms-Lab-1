@@ -5,7 +5,7 @@
 namespace LU
 { 
  template <typename T>
- void PshonovkiyMain(T ** A, int size);
+ void PshonovskiyMain(T ** A, int size);
 
 	
 }
