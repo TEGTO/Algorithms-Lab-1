@@ -146,13 +146,13 @@ namespace LU
 
 
  template <typename D>
-void myMain(D** A, int size)
+void PshonovkiyMain(D** A, int size)
  {
-	unsigned int start_time = clock();
-	
+	unsigned int startTime = clock();
 	 LU(A, size);
-	 unsigned int end_time = clock();
-	 cout << "\nЧас виконання алгоритму LU : " << end_time << " мс" << endl;
+	 unsigned int endTime = clock();
+	 unsigned int searchTime = endTime - startTime;
+	 cout << "\nЧас виконання алгоритму LU : " << searchTime << " мс" << endl;
  }
-template void myMain<double>(double** A, int size);
+template void PshonovkiyMain<double>(double** A, int size);
 }

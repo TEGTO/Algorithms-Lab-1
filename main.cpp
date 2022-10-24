@@ -38,7 +38,7 @@ int main()
 	A[3][2] = 3.0;
 	A[3][3] = 1.0;
 	//ваши функции 
-	LU::myMain(A,size);
+	LU::PshonovkiyMain(A,size);
 	//#1:: myMain(A,size);
 	//...
 	return 0;
