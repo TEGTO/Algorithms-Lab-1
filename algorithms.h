@@ -1,7 +1,11 @@
 #pragma once
 
 // write here headers of tasks 
+
 namespace LU
-{
-	void myMain();
+{ 
+ template <typename T>
+ void myMain(T ** A, int size);
+
+	
 }
