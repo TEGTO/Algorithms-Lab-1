@@ -90,9 +90,16 @@ namespace LU
 			}
 		}
 	}
+	template <typename T>
+	void matrixMemoryClear(T** arr, int size)
+	{
+		for (int i = 0; i < size; i++)
+			delete[] arr[i];
+		delete[] arr;
+	}
  template <typename T>
  void LU(T** A, int size)
- {
+ { //Створення всіх матриць, які потрібні 
 	 double** L = new double*[size];
 	 double** U = new double*[size];
 	 double** C = new double*[size];
@@ -116,7 +123,7 @@ namespace LU
 		 }
 	 }
 	 for (int i = 0; i < size; i++)
-	 {
+	 { //Алгоритм який находить L та U матриці
 		 for (int j = 0; j < size; j++)
 		 {
 			 if (i<=j)
@@ -127,7 +134,7 @@ namespace LU
 	 }
 	 LUmatrixPrint(L, U, size);
 	 matrixSum(L, U, C, size);
-
+	 //Алгоритм який находить обернену матрицю
 	 for (int k = size - 1; k >= 0; k--) {
 		 X[k][k] = 1;
 		 for (int j = size - 1; j > k; j--) X[k][k] -= C[k][j] * X[j][k];
@@ -141,8 +148,12 @@ namespace LU
 		 }
 	 }
 	 matrixPrint(X, size);
+	 matrixMemoryClear(L, size);
+	 matrixMemoryClear(U, size);
+	 matrixMemoryClear(C, size);
+	 matrixMemoryClear(X, size);
  }
-
+ 
 
 
  template <typename D>
