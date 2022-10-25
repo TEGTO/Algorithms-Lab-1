@@ -1,3 +1,6 @@
 #pragma once
 
-// write here headers of tasks 
+namespace  Newtons_method
+{	
+	void VolkovMain(double** A, int n);
+}
