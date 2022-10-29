@@ -38,8 +38,26 @@ int main()
 	A[3][2] = 3.0;
 	A[3][3] = 1.0;
 	//алгоритми обчислення оберненої матриці 
-	LU::PshonovskiyMain(A,size); //Задача №3 LU алгоритм
-
+	int type;
+	cout << "Алгоритми: " << endl;
+	cout << "3.LU алгоритм" << endl;
+	cout << "4.Метод Ньютона" << endl;
+	cout << "\nВиберiть алгоритм для обчислення: " << endl;
+	cin >> type;
+	cout << endl;
+	switch (type)
+	{
+	case 3:
+		LU::PshonovskiyMain(A, size); //Задача №3 LU алгоритм
+		break;
+	case 4:
+		Newtons_method::VolkovMain(A, size); //Задача №4 метод Ньютона алгоритм
+		break;
+	default:
+		break;
+	}
+	
+	
 
 	return 0;
 }
