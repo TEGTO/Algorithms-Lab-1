@@ -5,10 +5,10 @@
 using namespace std;
 
 
-// write your solutions of tasks here 
+//обернена матриця за допомогою LU розклада
 namespace LU
 {
-	//сума 
+	//сума для знаходження матриці L та U
 	double sum(int i , int j, double ** L, double** U, int type)
 	{
 		double sum = 0;
@@ -35,7 +35,7 @@ namespace LU
 		}
 		return sum;
 	}
-	//виводить L та U матриці
+	//виводить L та U матриці в консоль
 	void LUmatrixPrint(double** L, double** U,int size)
 	{
 		cout <<std::setprecision(4);
@@ -58,7 +58,7 @@ namespace LU
 			cout << "\n";
 		}
 	}
-	//виводить матрицю
+	//виводить обернену матрица Х
 	void matrixPrint(double** X,int size)
 	{
 		cout << std::setprecision(5);
@@ -90,15 +90,19 @@ namespace LU
 			}
 		}
 	}
+	
 	template <typename T>
+	//Прибирає непотрібну пам'ять 
 	void matrixMemoryClear(T** arr, int size)
 	{
 		for (int i = 0; i < size; i++)
 			delete[] arr[i];
 		delete[] arr;
 	}
- template <typename T>
- void LU(T** A, int size)
+
+	template <typename T>
+	 //основний метод (обчислення оберненої матриці LU алгоритмом) 
+	 void LU(T** A, int size)
  { //Створення всіх матриць, які потрібні 
 	 double** L = new double*[size];
 	 double** U = new double*[size];
@@ -111,6 +115,7 @@ namespace LU
 		 C[i] = new double[size];
 		 X[i] = new double[size];
 	 }
+	 //Запомвнюємо всі матриці нулями
 	 for (int i = 0; i < size; i++)
 	 {
 		 for (int j = 0; j < size; j++)
@@ -147,7 +152,9 @@ namespace LU
 			 X[i][k] /= C[i][i];
 		 }
 	 }
+	 //Виводимо обернену матрицю
 	 matrixPrint(X, size);
+	 //Видаляємо вже непотрібні матрици 
 	 matrixMemoryClear(L, size);
 	 matrixMemoryClear(U, size);
 	 matrixMemoryClear(C, size);
@@ -156,14 +163,16 @@ namespace LU
  
 
 
- template <typename D>
-void PshonovskiyMain(D** A, int size)
- {
-	unsigned int startTime = clock();
-	 LU(A, size);
-	 unsigned int endTime = clock();
-	 unsigned int searchTime = endTime - startTime;
-	 cout << "\nЧас виконання алгоритму LU : " << searchTime << " мс" << endl;
- }
-template void PshonovskiyMain<double>(double** A, int size);
+	 template <typename D>
+	void PshonovskiyMain(D** A, int size)
+	 {
+		unsigned int startTime = clock();
+		 LU(A, size);
+		 unsigned int endTime = clock();
+		 unsigned int searchTime = endTime - startTime;
+		 cout << "\nЧас виконання алгоритму LU : " << searchTime << " мс" << endl;
+	 }
+	template void PshonovskiyMain<double>(double** A, int size);
+	template void PshonovskiyMain<int>(int** A, int size);
+	template void PshonovskiyMain<float>(float** A, int size);
 }

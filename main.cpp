@@ -3,7 +3,7 @@
 using namespace std;
 
 
-// main cpp, don't use a lot pls 
+
 
 
 
@@ -20,7 +20,7 @@ int main()
 	double** A = new double* [size];
 	for (int i = 0; i < size; i++)
 		A[i] = new double[size];
-	//одна матриця
+	//матриця для прикладу
 	A[0][0] = 6.0;
 	A[0][1] = 3.0;
 	A[0][2] = 8.0;
@@ -37,9 +37,9 @@ int main()
 	A[3][1] = 2.0;
 	A[3][2] = 3.0;
 	A[3][3] = 1.0;
-	//ваши функции 
-	LU::PshonovskiyMain(A,size); //Задача №3 
-	//#1:: myMain(A,size);
-	//...
+	//алгоритми обчислення оберненої матриці 
+	LU::PshonovskiyMain(A,size); //Задача №3 LU алгоритм
+
+
 	return 0;
 }
