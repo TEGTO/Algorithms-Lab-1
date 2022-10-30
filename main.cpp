@@ -16,7 +16,7 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	int size = 4;
+	size_t size = 4;
 	double** A = new double* [size];
 	for (int i = 0; i < size; i++)
 		A[i] = new double[size];
