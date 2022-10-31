@@ -1,6 +1,6 @@
 #pragma once
 
-namespace  Newtons_method
+namespace  Strassen_algo
 {	
-	void VolkovMain(double** A, int n);
+	void KovalovMain();
 }
