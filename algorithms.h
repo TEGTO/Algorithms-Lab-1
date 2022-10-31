@@ -3,7 +3,7 @@
 
 namespace LU
 { 
- template <typename T>//створення шаблону
+ template <typename T>
  void PshonovskiyMain(T ** A, int size);
 }
 namespace  Newtons_method
