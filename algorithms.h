@@ -1,6 +1,9 @@
 #pragma once
-#pragma once
 
+namespace  Strassen_algo
+{	
+	void KovalovMain();
+}
 namespace LU
 {
 	template <typename T>//створення шаблону
