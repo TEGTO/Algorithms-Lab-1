@@ -58,10 +58,10 @@ int main()
 			Gauss_Zhordan::Zhevahin_Main(A, size, size); //Задача №2 Побудова оберненої матриці методом Гауса-Жордана
 			break;
 		case 3:
-			LU::PshonovskiyMain(A, size); //Побудова оберненої матриці методом LU
+			LU::PshonovskiyMain(A, size); //Задача №3 Побудова оберненої матриці методом LU
 			break;
 		case 4:
-			Newtons_method::VolkovMain(A, size); //Побудова оберненої матриці методом Ньютона
+			Newtons_method::VolkovMain(A, size); //Задача №4 Побудова оберненої матриці методом Ньютона
 			break;
 		default:		
 			break;
