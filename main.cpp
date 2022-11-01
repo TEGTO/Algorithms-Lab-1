@@ -41,23 +41,27 @@ int main()
 	int type;
 	
 		cout << "\nАлгоритми: " << endl;
-		cout << "2.Методом Гауса-Жордана" << endl;
-		cout << "3.LU алгоритм" << endl;
-		cout << "4.Метод Ньютона" << endl;
+		cout << "1.Алгоритм Штрассена для множення матриць" << endl;
+		cout << "2.Побудова оберненої матриці методом Гауса-Жордана" << endl;
+		cout << "3.Побудова оберненої матриці методом LU" << endl;
+		cout << "4.Побудова оберненої матриці методом Ньютона" << endl;
 		cout << "0.Вихiд" << endl;
 		cout << "\nВиберiть алгоритм для обчислення: " << endl;
 		cin >> type;
 		cout << endl;
 		switch (type)
 		{
+		case 1:
+			Strassen_algo::KovalovMain(); //Задача №1 Алгоритм Штрассена для множення матриць
+			break;
 		case 2:
-			Gauss_Zhordan::Zhevahin_Main(A, size, size); //Задача №4 методом Гауса-Жордана
+			Gauss_Zhordan::Zhevahin_Main(A, size, size); //Задача №2 Побудова оберненої матриці методом Гауса-Жордана
 			break;
 		case 3:
-			LU::PshonovskiyMain(A, size); //Задача №3 методом LU 
+			LU::PshonovskiyMain(A, size); //Побудова оберненої матриці методом LU
 			break;
 		case 4:
-			Newtons_method::VolkovMain(A, size); //Задача №4 методом Ньютона 
+			Newtons_method::VolkovMain(A, size); //Побудова оберненої матриці методом Ньютона
 			break;
 		default:		
 			break;

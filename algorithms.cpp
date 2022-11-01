@@ -473,6 +473,11 @@ namespace Gauss_Zhordan {
 		cout << "Time of execution is:" << (end - start) / CLOCKS_PER_SEC << " seconds" << endl;//виведення часу виконання програми
 
 	}
+
+	template void Zhevahin_Main<double>(double** A, int size1, int size2);//створення шаблонів для основного методу
+	template void Zhevahin_Main<int>(int** A, int size1, int size2);
+	template void Zhevahin_Main<float>(float** A, int size1, int size2);
+}
 namespace Strassen_algo {
     void copy(int *a, int *b, int ib, int jb, int n)
     {
@@ -641,12 +646,8 @@ namespace Strassen_algo {
         Strassen_algo();
         unsigned int endTime = clock();
         unsigned int searchTime = endTime - startTime;
-        cout << "\nthe time of Newton's method is : " << searchTime  << endl;
+        cout << "\nthe time of Strassen's method is : " << searchTime  << endl;
     }
 }
 
-	template void Zhevahin_Main<double>(double** A, int size1, int size2);//створення шаблонів для основного методу
-	template void Zhevahin_Main<int>(int** A, int size1, int size2);
-	template void Zhevahin_Main<float>(float** A, int size1, int size2);
 
-}
