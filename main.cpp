@@ -126,7 +126,7 @@ int main()
 {
 	setlocale(LC_ALL, "Rus");
 	size_t size = 4;
-	algorithm f;
+	
 	double** A = new double* [size];
 	for (int i = 0; i < size; i++)
 		A[i] = new double[size];
@@ -166,18 +166,17 @@ int main()
 			break;
 		case 2:
 			//Gauss_Zhordan::Zhevahin_Main(A, size, size); //Задача №2 Побудова оберненої матриці методом Гауса-Жордана
-			f = &Gauss_Zhordan::Zhevahin_Main;
-			UnitTest(f);
+			UnitTest(&Gauss_Zhordan::Zhevahin_Main);
 			break;
 		case 3:
 			//LU::PshonovskiyMain(A, size); //Задача №3 Побудова оберненої матриці методом LU
-			 f = &LU::PshonovskiyMain;
-			UnitTest(f);
+			 
+			UnitTest(&LU::PshonovskiyMain);
 			break;
 		case 4:
 			//Newtons_method::VolkovMain(A, size); //Задача №4 Побудова оберненої матриці методом Ньютона
-			f = &Newtons_method::VolkovMain;
-			UnitTest(f);
+			
+			UnitTest(&Newtons_method::VolkovMain);
 			break;
 		default:		
 			break;
