@@ -9,6 +9,7 @@ using namespace std;
 //обернена матриця за допомогою LU розклада
 namespace LU
 {
+	
 	//сума для знаходження матриці L та U
 	double sum(int i, int j, double** L, double** U, int type)
 	{
@@ -166,9 +167,13 @@ namespace LU
 
 	template <typename D>
 	void PshonovskiyMain(D** A, int size)
-	{
+	{	
 		unsigned int startTime = clock();
-		LU(A, size);
+		if (size>1)
+			LU(A, size);
+		else
+			cout << "Розмір матриці = 1" << endl;
+		
 		unsigned int endTime = clock();
 		unsigned int searchTime = endTime - startTime;
 		cout << "\nЧас виконання алгоритму LU : " << searchTime << " мс" << endl;
@@ -447,11 +452,11 @@ namespace Gauss_Zhordan {
 	}
 
 	template<typename T>
-	void Gauss_Zhordan_Method(T** matrix, int size1, int size2) {
-		cout << "Initial matrix:" << endl;//виведення початковоъ матрицы
+	void Gauss_Zhordan_Method(T** matrix, int size1) {
+		cout << "\n\nInitial matrix:" << endl;//виведення початковоъ матрицы
 		show_matrix(matrix, size1);
 		if (det(matrix, size1) == 0) { cout << "Determinant=0,so there is no reversed matrix!!"; return; }//умови,при яких оберненої матриці не існує
-		if (size1 != size2) { cout << "Matrix is not quadratic,so there is no reversed matrix!!!"; return; }
+		
 		T** exp_matrix = add_simple_matrix(matrix, size1);//створення розширенної матриці
 		for (int i = 0; i < size1; i++) {
 			Simplifying_Column(exp_matrix, size1, i);//спрощення кожного стовпчика в розширенній матриці
@@ -466,17 +471,17 @@ namespace Gauss_Zhordan {
 	}
 
 	template<typename T>
-	void Zhevahin_Main(T** matrix, int size1, int size2) {
+	void Zhevahin_Main(T** matrix, int size1) {
 		double start = clock();//початок відрахунку
-		Gauss_Zhordan_Method(matrix, size1, size2);//виконання методу
+		Gauss_Zhordan_Method(matrix, size1);//виконання методу
 		double end = clock();//кінець відрахунку
 		cout << "Time of execution is:" << (end - start) / CLOCKS_PER_SEC << " seconds" << endl;//виведення часу виконання програми
 
 	}
 
-	template void Zhevahin_Main<double>(double** A, int size1, int size2);//створення шаблонів для основного методу
-	template void Zhevahin_Main<int>(int** A, int size1, int size2);
-	template void Zhevahin_Main<float>(float** A, int size1, int size2);
+	template void Zhevahin_Main<double>(double** A, int size1);//створення шаблонів для основного методу
+	template void Zhevahin_Main<int>(int** A, int size1);
+	template void Zhevahin_Main<float>(float** A, int size1);
 }
 namespace Strassen_algo {
     void copy(int *a, int *b, int ib, int jb, int n)
