@@ -64,7 +64,7 @@ namespace LU
 	void matrixPrint(double** X, int size)
 	{
 		cout << std::setprecision(5);
-		cout << "\nX: \n";
+		cout << "\nReversed Matrix:" << endl;
 		for (int i = 0; i < size; i++)
 		{
 			for (int j = 0; j < size; j++)
@@ -169,11 +169,12 @@ namespace LU
 	void PshonovskiyMain(D** A, int size)
 	{	
 		unsigned int startTime = clock();
-		if (size>1)
+		if (size > 0)
 			LU(A, size);
 		else
-			cout << "Розмір матриці = 1" << endl;
-		
+			cout << "\n!!!Помилка. Розмiр матрицi = 0!!!\n" << endl;
+			
+	
 		unsigned int endTime = clock();
 		unsigned int searchTime = endTime - startTime;
 		cout << "\nЧас виконання алгоритму LU : " << searchTime << " мс" << endl;
@@ -320,17 +321,22 @@ namespace Newtons_method {
 				clear(prev, n);
 			}
 			//друк матриці на екран
+			cout << "\nReversed Matrix:" << endl;
 			show(inv, n);
 		}
 		else
 			printf("Impossible\n");
-		clear(A, n);
+		//clear(A, n);
 		clear(E2, n);
 
 	}
 	void VolkovMain(double** A, int n) {
 		unsigned int startTime = clock();
-		Newt_method(A, n);
+		if (n > 0)
+			Newt_method(A, n);
+		else
+			cout << "\n!!!Помилка. Розмiр матрицi = 0!!!\n" << endl;
+	
 		unsigned int endTime = clock();
 		unsigned int searchTime = endTime - startTime;
 		cout << "\nthe time of Newton's method is : " << searchTime << endl;
@@ -453,8 +459,7 @@ namespace Gauss_Zhordan {
 
 	template<typename T>
 	void Gauss_Zhordan_Method(T** matrix, int size1) {
-		cout << "\n\nInitial matrix:" << endl;//виведення початковоъ матрицы
-		show_matrix(matrix, size1);
+		
 		if (det(matrix, size1) == 0) { cout << "Determinant=0,so there is no reversed matrix!!"; return; }//умови,при яких оберненої матриці не існує
 		
 		T** exp_matrix = add_simple_matrix(matrix, size1);//створення розширенної матриці
@@ -464,7 +469,7 @@ namespace Gauss_Zhordan {
 		T** reversedmatrix = get_reversed_matrix(exp_matrix, size1);//отримання оберненої матриці
 		cout << "Reversed matrix:" << endl;//виведення оберненої матриці
 		show_matrix(reversedmatrix, size1);
-		garbage_cleaning(matrix, size1);//вивільнення пам'яті
+		//garbage_cleaning(matrix, size1);//вивільнення пам'яті (а зачем оригинальную матрицу удалять?) 
 		garbage_cleaning(exp_matrix, size1);
 		garbage_cleaning(reversedmatrix, size1);
 		return;
@@ -473,7 +478,11 @@ namespace Gauss_Zhordan {
 	template<typename T>
 	void Zhevahin_Main(T** matrix, int size1) {
 		double start = clock();//початок відрахунку
-		Gauss_Zhordan_Method(matrix, size1);//виконання методу
+		if (size1 > 0)
+			Gauss_Zhordan_Method(matrix, size1);//виконання методу
+		else
+			cout << "\n!!!Помилка. Розмiр матрицi = 0!!!\n" << endl;
+		
 		double end = clock();//кінець відрахунку
 		cout << "Time of execution is:" << (end - start) / CLOCKS_PER_SEC << " seconds" << endl;//виведення часу виконання програми
 

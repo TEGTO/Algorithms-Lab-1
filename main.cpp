@@ -2,119 +2,44 @@
 #include"algorithms.h"
 using namespace std;
 
-
+template<typename T>
+void show_matrix(T** matrix, int size) 
+{
+	for (int i = 0; i < size; i++) 
+	{
+		for (int j = 0; j < size; j++) 
+		{
+			cout << matrix[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
 typedef void (*algorithm)(double** A, int d);
 void UnitTest(algorithm foo)
 {
-	size_t size = 4;
-	double** A = new double* [size];
-	for (int i = 0; i < size; i++)
-		A[i] = new double[size];
-	//матриц€ дл€ прикладу
-	A[0][0] = 6.0;
-	A[0][1] = 3.0;
-	A[0][2] = 8.0;
-	A[0][3] = 1.0;
-	A[1][0] = 4.0;
-	A[1][1] = 7.0;
-	A[1][2] = 6.0;
-	A[1][3] = 5.0;
-	A[2][0] = 9.0;
-	A[2][1] = 1.0;
-	A[2][2] = 7.0;
-	A[2][3] = 6.0;
-	A[3][0] = 8.0;
-	A[3][1] = 2.0;
-	A[3][2] = 3.0;
-	A[3][3] = 1.0;
-	foo(A, size);
-	double** B = new double* [size];
-	for (int i = 0; i < size; i++)
-		B[i] = new double[size];
-	//матриц€ дл€ прикладу
-	B[0][0] = 436.0;
-	B[0][1] = 43.0;
-	B[0][2] = 3438.0;
-	B[0][3] = 333.0;
-	B[1][0] = 34.0;
-	B[1][1] = 41.0;
-	B[1][2] = 41.0;
-	B[1][3] = 15.0;
-	B[2][0] = 93.0;
-	B[2][1] = 143.0;
-	B[2][2] = 437.0;
-	B[2][3] = 46.0;
-	B[3][0] = 854.0;
-	B[3][1] = 4542.0;
-	B[3][2] = 13.0;
-	B[3][3] = 111.0;
-	foo(B, size);
-
-	double** C = new double* [size-1];
-	for (int i = 0; i < size-1; i++)
-		C[i] = new double[size-1];
-	//матриц€ дл€ прикладу
-	C[0][0] = 2.0;
-	C[0][1] = 13.0;
-	C[0][2] = 31.0;
-
-	C[1][0] = 31.0;
-	C[1][1] = 35.0;
-	C[1][2] = 54.0;
-
-	C[2][0] = 311.0;
-	C[2][1] = 43.0;
-	C[2][2] = 343.0;
-
-
-	foo(C, size - 1);
-	double** D = new double* [size-1];
-	for (int i = 0; i < size-1; i++)
-		D[i] = new double[size-1];
-	//матриц€ дл€ прикладу
-	D[0][0] = 23232;
-	D[0][1] = 333;
-	D[0][2] = 43;
-
-	D[1][0] = 41;
-	D[1][1] = 4141;
-	D[1][2] = 343;
-
-	D[2][0] = 4343;
-	D[2][1] = 41313.0;
-	D[2][2] = 233;
-
-
-	foo(D, size - 1);
-
-	double** E = new double* [size+1];
-	for (int i = 0; i < size+1; i++)
-		E[i] = new double[size+1];
-	//матриц€ дл€ прикладу
-	E[0][0] = 33;
-	E[0][1] = 33;
-	E[0][2] = 131;
-	E[0][3] = 2;
-	E[0][4] = 13;
-	E[1][0] = 232;
-	E[1][1] = 22;
-	E[1][2] = 323;
-	E[1][3] = 355;
-	E[1][4] = 34;
-	E[2][0] = 434;
-	E[2][1] = 22;
-	E[2][2] = 343;
-	E[2][3] = 131;
-	E[2][4] = 3443;
-	E[3][0] = 54;
-	E[3][1] = 232;
-	E[3][2] = 32;
-	E[4][0] = 11;
-	E[4][1] = 232;
-	E[4][2] = 433;
-	E[4][3] = 2424;
-	E[4][4] = 141;
-	foo(E, size+1);
+	srand(time(NULL));
+	size_t max_size = 6;
+	size_t size = 6;
+	double** A = new double* [max_size];
+	for (int i = 0; i < max_size; i++)
+		A[i] = new double[max_size];
+	for (size_t i = 0; i < 20; i++)
+	{
+		size = rand()%(max_size+1);
+		for (size_t j = 0; j < size; j++)
+		{
+			for (size_t k = 0; k < size; k++)
+			{
+				A[j][k] = rand() % 300;
+			}
+		}
+		cout << "==================" << endl;
+		cout << "\n\nInitial matrix:" << endl;//виведенн€ початковоъ матрицы
+		show_matrix(A, size);
+		cout << endl<<endl;
+		foo(A, size);
+		cout << "==================" << endl;
+	}
 }
 
 
